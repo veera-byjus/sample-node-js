@@ -1,0 +1,12 @@
+
+kind: pipeline
+name: test slack
+
+steps:
+steps:
+- name: test
+  image: node:14
+  commands:
+  - npm install
+  - npm run build
+  - npm start
