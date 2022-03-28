@@ -3,7 +3,10 @@ name: default
 
 steps:
 - name: test
-  image: node
+  image: golang:1.12
   commands:
-  - npm install
-  - npm test
+  - go test
+
+- name: build
+  commands:
+  - docker build .
