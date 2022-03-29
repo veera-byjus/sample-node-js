@@ -1,19 +1,9 @@
----
 kind: pipeline
 name: default
 
 steps:
 - name: test
-  image: docker:dind
-  volumes:
-  - name: dockersock
-    path: /var/run/docker.sock
+  image: node
   commands:
-  - docker ps -a
-
-volumes:
-- name: dockersock
-  host:
-    path: /var/run/docker.sock
-
-...
+  - npm install
+  - npm run dev
