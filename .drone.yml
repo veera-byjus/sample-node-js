@@ -1,12 +1,19 @@
+---
 kind: pipeline
 name: default
 
 steps:
 - name: test
-  image: golang:1.12
+  image: docker:dind
+  volumes:
+  - name: dockersock
+    path: /var/run/docker.sock
   commands:
-  - go test
+  - docker ps -a
 
-- name: build
-  commands:
-  - docker build .
+volumes:
+- name: dockersock
+  host:
+    path: /var/run/docker.sock
+
+...
